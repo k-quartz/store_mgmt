@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1>Store Department</h1>
+<section class="statistic statistic2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3" style="width:20%">
+                <div class="statistic__item statistic__item--green">
+                    <h2 class="number">10,368</h2>
+                    <span class="desc">Todays Issue</span>
+                    <div class="icon">
+                        <i class="zmdi zmdi-account-o"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ml-2">&nbsp;</div>
+            <div class="col-md-6 col-lg-3" style="width:20%">
+                <div class="statistic__item statistic__item--orange">
+                    <h2 class="number">388,688</h2>
+                    <span class="desc">Todays Inward</span>
+                    <div class="icon">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ml-2">&nbsp;</div>
+            <div class="col-md-6 col-lg-3" style="width:20%">
+                <div class="statistic__item statistic__item--blue">
+                    <h2 class="number">1,086</h2>
+                    <span class="desc">Monthly Issue</span>
+                    <div class="icon">
+                        <i class="zmdi zmdi-calendar-note"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="ml-2">&nbsp;</div>
+            <div class="col-md-6 col-lg-3" style="width:20%">
+                <div class="statistic__item statistic__item--red">
+                    <h2 class="number">$1,060,386</h2>
+                    <span class="desc">Monthly Inward</span>
+                    <div class="icon">
+                        <i class="zmdi zmdi-money"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row grid-responsive">
+        
+        <div class="column">
+            <a class="button" href="{% url 'inwardreg'%}">Material Inward</a>
+            <a class="button" href="{% url 'issuereg'%}">Material Issue</a>
+        </div>
+    </div>
+
+</section>
+{% endblock content %}

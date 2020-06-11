@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<form action="/inward/add/" method="POST">
+    {{ CSRF_TOKEN }}
+
+    <div class="row grid-responsive">
+        <div class="column ">
+            <div class="card">
+                <div class="card-title">
+                    <h3>New Inward</h3>
+                </div>
+                <div class="card-block">
+                    <form>
+                        <fieldset>
+                            <label for="nameField">Select Vendor</label>
+                            {{ form.vendor}}
+                            <label for="ageRangeField">Inward Date</label>
+                            {{ form.inwarddate}}
+                            <label for="commentField">Bill No.</label>
+                            {{ form.billno}}
+                            <input class="button-primary" type="submit" value="Submit">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</form>
+
+
+{% endblock content %}

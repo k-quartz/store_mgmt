@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<form action="/product/add/" method="POST">
+    {% csrf_token %}
+
+    <div class="row grid-responsive">
+        <div class="column ">
+            <div class="card">
+                <div class="card-title">
+                    <h3>New Product</h3>
+                </div>
+                <div class="card-block">
+                    <form>
+                        <fieldset>
+                            <label for="nameField">Produt Name</label>
+                            {{ form.productname}}
+                            <label for="specification">Specification</label>
+                            {{ form.specification}}
+                            <label for="minStock">Min Stock</label>
+                            {{ form.minStock}}
+                            <label for="reOrderPoint">Reorder Qty</label>
+                            {{ form.reOrderPoint}}
+                            <label for="reOrderPoint">Min Order Qty</label>
+                            {{ form.minOrderQty}}
+                            <input class="button-primary" type="submit" value="Submit">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+</form>
+
+
+{% endblock content %}
