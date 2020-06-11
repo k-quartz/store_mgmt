@@ -60,7 +60,7 @@ def createPurchaseOrderDetail(request):
         print(form)
         if form.is_valid():
             print("is valid")
-            form.purchaseorder_id=request.POST['purchaseorder_id']
+            
             form.save()
         else:
             messages.error(request, "Error")  

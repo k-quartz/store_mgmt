@@ -25,7 +25,7 @@ class PurchaseOrderDetailForm(forms.ModelForm):
     product=forms.ModelChoiceField(queryset=models.Product.objects.all(),empty_label="Select Product")
     class Meta:
         model=models.PurchaseOrder_Detail
-        fields=['product','poqty','rate']        
+        fields=['purchaseorder','product','poqty','rate']        
 
 class MaterialInwardForm(forms.ModelForm):
     vendor=forms.ModelChoiceField(queryset=models.Vendor.objects.all(),empty_label="Select Vendor")
