@@ -29,28 +29,6 @@ class Vendor(models.Model):
         managed=True
         db_table='vendor'
 
-  
-
-class MaterialInward(models.Model):
-    vendor=models.ForeignKey(Vendor,on_delete=models.CASCADE)
-    inwarddate=models.DateField(auto_now_add=False)
-    billno=models.CharField(max_length=30)
-
-    class Meta:
-        managed=True
-        db_table='materialinward'
-
-class MaterialInward_Detail(models.Model):
-    materialinward=models.ForeignKey(MaterialInward,on_delete=models.CASCADE)
-    product=models.ForeignKey(Product,on_delete=models.CASCADE)
-    inwardqty=models.FloatField()
-    issuedqty=models.FloatField()
-
-    class Meta:
-        managed=True
-        db_table='materialinward_detail'
-
-
 class MaterialIssue(models.Model):
     vendor=models.ForeignKey(Vendor,on_delete=models.CASCADE)
     issuedate=models.DateField(auto_now_add=True)
@@ -58,6 +36,7 @@ class MaterialIssue(models.Model):
     class Meta:
         managed=True
         db_table='materialissue'
+
 
 class PurchaseOrder(models.Model):
     pono=models.CharField(max_length=100)
@@ -68,6 +47,7 @@ class PurchaseOrder(models.Model):
     class Meta:
         managed=True
         db_table='purchaseorder'
+
 
 class PurchaseOrder_Detail(models.Model):
     purchaseorder=models.ForeignKey(PurchaseOrder,on_delete=models.CASCADE)
@@ -80,3 +60,23 @@ class PurchaseOrder_Detail(models.Model):
     class Meta:
         managed=True
         db_table='purchaseorder_detail'
+
+
+class MaterialInward(models.Model):
+    vendor=models.ForeignKey(Vendor,on_delete=models.CASCADE)
+    inwarddate=models.DateField(auto_now_add=False)
+    billno=models.CharField(max_length=30)
+
+    class Meta:
+        managed=True
+        db_table='materialinward'
+
+class MaterialInward_Detail(models.Model):
+    materialinward=models.ForeignKey(MaterialInward,on_delete=models.CASCADE)
+    purchasedetail=models.ForeignKey(PurchaseOrder_Detail,on_delete=models.CASCADE, default=0)
+    inwardqty=models.FloatField()
+    issuedqty=models.FloatField()
+
+    class Meta:
+        managed=True
+        db_table='materialinward_detail'

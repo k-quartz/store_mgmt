@@ -23,4 +23,6 @@ urlpatterns = [
     path('po/update/<id>',views.updatePurchaseOrder,name='update-po'),
     path('inward/update/<id>',views.inwardreg,name='update-inward'),
     path('issue/update/<id>',views.issuereg,name='update-issue'),
+
+    path('pod/delete/<id>',views.deletePurchaseorderDetail,name="delete-pod"),
 ]

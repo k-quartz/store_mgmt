@@ -309,7 +309,7 @@ select:focus {
   margin-bottom: 2.2rem; }
 
 .user-section {
-  margin-top: -8px;
+  margin-top: -10px;
   margin-right: 40px; }
   .user-section a {
     float: right; }
@@ -533,3 +533,28 @@ select:focus {
     margin-right: 20px; }
     .user-section .username {
       display: none; } }
+
+
+  .pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+}
+
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: .25rem;
+  border-bottom-left-radius: .25rem;0
+}
+.page-link {
+  position: relative;
+  display: block;
+  padding: .5rem .75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}

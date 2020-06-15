@@ -3,13 +3,13 @@
 
    
 
-    <div class="row grid-responsive">
+    <div class="row grid-responsive ">
         <div class="column ">
-            <div class="card">
+            <div class="card ">
                 <div class="card-title">
                     <h3>New Purchase Order</h3>
                 </div>
-                <div class="card-block">
+                <div class="card-block ">
                     <form action="/po/add/" method="POST">
                      {% csrf_token %}
                         <fieldset>
@@ -31,17 +31,6 @@
                     <h3>Product Detail</h3>
                 </div>
                 <div class="card-block">
-                    <form action="/pod/add/" method="POST" >
-                        {% csrf_token %} 
-                        <tr>
-                            <td>{{formd.product}}</td>
-                            <td>{{formd.poqty}}</td>
-                            <td>{{formd.rate}}</td>
-                            <td><input class="button-primary" type="submit" value="Submit"></td>
-                        </tr>
-                        <input type="hidden" value={{id}} name="purchaseorder" />
-                    </form>
-
                     <table>
                         <thead>
                             <th>Product</th>
@@ -50,13 +39,56 @@
                             <th>Action</th>
                         </thead>
                         <tbody>
-                    </tbody>    
+                            <form action="/pod/add/" method="POST" >
+                            {% csrf_token %} 
+                            <tr>
+                                <td>{{formd.product}}</td>
+                                <td>{{formd.poqty}}</td>
+                                <td>{{formd.rate}}</td>
+                                <td><input class="button-primary" type="submit" value="Submit"></td>
+                            </tr>
+                            <input type="hidden" value={{id}} name="purchaseorder" />
+                            </form>
+                            {% if products %}
+                            {% for product in products %}
+                            <tr id="{{product.id}}">
+                                <td>{{product.product}}</td>
+                                <td>{{product.poqty}}</td>
+                                <td>{{product.rate}}</td>
+                                <td><button class="background-danger" onclick="CnfDelete({{product.id}});">Delete</button></td>
+                            </tr>
+                            {% endfor %}
+                            {% endif %}
+                        </tbody>    
                     </table>                     
                 </div>
+                
+                {{products.page}}
+                {% if products.has_other_pages %}
+                <nav aria-label="Page navigation example ml-2">
+                <ul class="pagination">
+                {% if products.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a></li>
+                {% endif %}
+                {% for i in products.paginator.page_range %}
+                    {% if products.number == i %}
+                        <li class="page-item active"><span class="page-link"  style="color: black;"  href="#">{{i}}<span class="sr-only">(current)</span></span></li>
+                    {% elif i > products.number|add:'-3' and i < products.number|add:'3' %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{i}}</a></li>
+                    {% endif %}
+                            
+                {% endfor %}
+                {% if products.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">Next</a></li>
+                {% endif %}
+                </ul>
+                </nav>    
+                {% endif %}            
+        
             </div>
         </div>
     </div>
+<script>
 
-
-
+</script>
 {% endblock content %}

@@ -16,6 +16,7 @@ class ProductForm(forms.ModelForm):
 
 class PurchaseOrderForm(forms.ModelForm):
     vendor=forms.ModelChoiceField(queryset=models.Vendor.objects.all(),empty_label="Select Vendor")
+    pono=forms.CharField(initial="Auto Number",required=False,disabled=True)
     podate=forms.DateField(widget=DateInput)
     class Meta:
         model=models.PurchaseOrder
@@ -23,6 +24,8 @@ class PurchaseOrderForm(forms.ModelForm):
 
 class PurchaseOrderDetailForm(forms.ModelForm):
     product=forms.ModelChoiceField(queryset=models.Product.objects.all(),empty_label="Select Product")
+    poqty=forms.IntegerField(initial="0")
+    rate=forms.IntegerField(initial="0.0")
     class Meta:
         model=models.PurchaseOrder_Detail
         fields=['purchaseorder','product','poqty','rate']        
